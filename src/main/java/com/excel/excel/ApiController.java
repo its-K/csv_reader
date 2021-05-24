@@ -24,15 +24,10 @@ public class ApiController {
         return "kise";
     }
 
-    @GetMapping("/kk")
-    public String hel(){
-        return "Hellooo";
-    }
-
     @PostMapping("/upload")
     public List<JSONObject> fileupload(@RequestParam("file") MultipartFile file) throws IOException{
         file.transferTo(new File("/home/kishore/Works/csv_reader/"+file.getOriginalFilename()));
-        List<JSONObject> me=new ArrayList<>();
+        List<JSONObject> Csvvalues=new ArrayList<>();
         try (BufferedReader br = Files.newBufferedReader(Paths.get("/home/kishore/Works/csv_reader/"+file.getOriginalFilename()))) {
             List <String> values=new ArrayList<>();
             String line;
@@ -47,12 +42,12 @@ public class ApiController {
                 for(int index=0;index<columns.length;index++){
                     obj.put(values.get(index), columns[index]);
                 }
-                me.add(obj);
+                Csvvalues.add(obj);
             }
         
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        return me;
+        return Csvvalues;
     }
 }
