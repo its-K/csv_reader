@@ -14,17 +14,17 @@
         <div id="form">
             <h1 align="center">Upload a CSV</h1>
             <div class="uploader">
-                <input id="csvFile" type="file" name="fileUpload" accept="csv/*" />
+                <input id="csvFile" type="file" name="fileUpload" onchange="filenameChange()" accept="csv/*" />
                 <label for="csvFile" id="file-drag">
                     <i class="fa fa-download" aria-hidden="true"></i>
                     <div>Select a file or drag here</div>
-                    <div id="notimage" class="hidden">Please select an CSV</div>
                     <span id="file-upload-btn" class="btn" style="margin-top:2px;background-color: blue;">Select a file</span>
+                    <div id="error" style="color: red;"></div>
                     <br>
-                    <button class="btn" style="margin-top: 50px;background-color: gray;cursor: pointer;" onclick="uploadFile()">Upload</button>
+                    <p id="filename" style="color: dodgerblue;"></p>
+                    <button class="btn" style="margin-top: 30px;background-color: gray;cursor: pointer;" onclick="uploadFile()">Upload</button>
                 </div>
                 </div>
-                
                 </label>
             </div>
         </div>  

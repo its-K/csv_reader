@@ -1,25 +1,34 @@
 
 function uploadFile(){
-    var url="/upload";
-    var formData=new FormData();
     var file = document.getElementById('csvFile').files[0];
-    formData.append('file',file);
-    fetch(url, {
-        method: 'POST',
-        body: formData,
-      }).then((response) => {
-        response.text().then(function (text) {
-            console.log(JSON.parse(text));
-            $("#form").addClass("hidden");
-            insertData(JSON.parse(text));
-          });
-      }).catch((error)=>{
-          console.log(error);
-      })
+    var filename=file.type;
+    if(filename==="text/csv"){
+        var url="/upload";
+        var formData=new FormData();
+        formData.append('file',file);
+        fetch(url, {
+            method: 'POST',
+            body: formData,
+        }).then((response) => {
+            response.text().then(function (text) {
+                data=JSON.parse(text);
+                if(data.length>=1){
+                    $("#form").addClass("hidden");
+                    insertData(JSON.parse(text));
+                }
+                $("#error").html('CSV file is empty');
+            });
+        }).catch((error)=>{
+            console.log(error);
+        })
+    }
+    else{
+        $("#error").html('Please select a CSV file !');
+    }
 }
 
 function insertData(data){
-    var builddata="<table>";
+    var builddata="<h1>Tables</h1><table>";
     data.forEach(rows => {
         rowdata="<tr>"
         rows.forEach(column => {
@@ -30,4 +39,9 @@ function insertData(data){
     });
     builddata+="</table>";
     $('.container').html(builddata);
+}
+
+function filenameChange(){
+    var file = document.getElementById('csvFile').files[0];
+    $("#filename").text(file.name);
 }
