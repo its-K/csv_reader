@@ -2,6 +2,8 @@ package com.excel.excel;
 
 import java.io.IOException;
 import java.util.*;
+
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,15 +15,18 @@ import org.springframework.web.multipart.MultipartFile;
 @CrossOrigin
 public class ApiController {  
 
-    @GetMapping("/")
-    public String kk(){
-        return "kise";
-    }
-
     @PostMapping("/upload")
     public List<List<String>> fileupload(@RequestParam("file") MultipartFile file) throws IOException{
-        csvReader app=new csvReader();
-        List <List<String>> Csvvalues=app.parseCsv(file);
+        List <List<String>> Csvvalues=csvReader.parseCsv(file);
         return Csvvalues;
+    }
+}
+
+@Controller
+class pageView{
+    
+    @GetMapping("/")
+    public String kk(){
+        return "index.html";
     }
 }

@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class csvReader {
-    public List<List<String>> parseCsv(MultipartFile file) throws IOException{
+    public static List<List<String>> parseCsv(MultipartFile file) throws IOException{
         List<List<String>> Csvvalues=new ArrayList<>();
         file.transferTo(new File("/home/kishore/Works/csv_reader/"+file.getOriginalFilename()));
         try (BufferedReader br = Files.newBufferedReader(Paths.get("/home/kishore/Works/csv_reader/"+file.getOriginalFilename()))) {
