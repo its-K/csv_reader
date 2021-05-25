@@ -15,7 +15,8 @@ function uploadFile(){
                     data=JSON.parse(text);
                     if(data.length>=1){
                         $("#form").addClass("hidden");
-                        insertData(JSON.parse(text));
+                        insertData(data);
+                        console.log(data);
                     }
                     $("#error").html('CSV file is empty');
                 });
@@ -37,7 +38,14 @@ function insertData(data){
     data.forEach(rows => {
         rowdata="<tr>"
         rows.forEach(column => {
-            rowdata+=`<td>${column}</td>`
+            val=parseInt(column)
+            if(!isNaN(val))
+            {
+                rowdata+=`<td style="text-align:right">${column}</td>`
+            }
+            else{
+                rowdata+=`<td>${column}</td>`
+            }
         });
         rowdata+="</tr>";
         builddata+=rowdata;
