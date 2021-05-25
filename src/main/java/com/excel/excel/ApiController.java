@@ -24,7 +24,7 @@ public class ApiController {
 
 @Controller
 class pageView{
-    
+
     @GetMapping("/")
     public String kk(){
         return "index.html";

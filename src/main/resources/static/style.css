@@ -1,3 +1,70 @@
-h1{
-    color: red;
-}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    z-index: 1;
+  }
+
+
+  .uploader {
+    display: block;
+    clear: both;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+    label {
+      float: left;
+      clear: both;
+      width: 100%;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      background: #fff;
+      border-radius: 7px;
+      border: 3px solid #eee;
+    }
+    label:hover {
+        border-color: blue;
+    }
+  
+    input[type="file"] {
+      display: none;
+    }
+    .hidden{
+        display: none;
+    }
+
+    .btn {
+        display: inline-block;
+        border-radius: .6rem;
+        padding: 0 1rem;
+        height: 36px;
+        line-height: 36px;
+        color: white;
+      }
+
+
+
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
