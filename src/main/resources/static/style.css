@@ -66,3 +66,7 @@
     tr:nth-child(even) {
     background-color: #dddddd;
     }
+  .tablecont{
+    overflow-y: scroll;
+    max-height:850px;
+  }
